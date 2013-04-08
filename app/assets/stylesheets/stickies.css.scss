@@ -1,0 +1,32 @@
+// Place all the styles related to the stickies controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#sticky-template {
+    display: none;
+}
+
+.sticky {
+    background-color: #FEF4AC;
+    float: left;
+    margin-top: 10px;
+    margin-right: 10px;
+    min-width: 200px;
+    min-height: 200px;
+}
+
+
+.sticky textarea {
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    height: 180px;
+    margin: 10px;
+    min-width: 200px;
+    min-height: 180px;
+    padding-top: 10px;
+    width: 200px;
+}
+
+
