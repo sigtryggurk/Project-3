@@ -10,10 +10,48 @@
 .sticky {
     background-color: #FEF4AC;
     float: left;
-    margin-top: 10px;
-    margin-right: 10px;
+    margin: 20px;
     min-width: 200px;
     min-height: 200px;
+    -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);  
+    -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);  
+    box-shadow: 5px 5px 7px rgba(33,33,33,.7);  
+}
+.text{
+    font-family: Gill Sans, Verdana;
+    font-size:16px;
+    font-weight: bold;
+
+}
+.sticky:hover, .sticky:focus{  
+  -moz-box-shadow:10px 10px 7px rgba(0,0,0,.7);  
+  -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);  
+  box-shadow:10px 10px 7px rgba(0,0,0,.7);  
+  z-index:5;  
+} 
+
+
+
+#sticky-container .sticky:nth-child(even){
+  -transform:rotate(4deg);  
+  -webkit-transform:rotate(4deg);  
+  -moz-transform:rotate(4deg); 
+  top:5px;
+
+}
+
+#sticky-container .sticky:nth-child(3n) {  
+  -o-transform:rotate(-3deg);  
+  -webkit-transform:rotate(-3deg);  
+  -moz-transform:rotate(-3deg);  
+  top:-5px;  
+} 
+
+#sticky-container .stickyi:nth-child(5n) a{  
+  -o-transform:rotate(5deg);  
+  -webkit-transform:rotate(5deg);  
+  -moz-transform:rotate(5deg);  
+  top:-10px;  
 }
 
 

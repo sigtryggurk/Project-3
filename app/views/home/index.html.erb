@@ -1,161 +1,25 @@
 <h1>SiggiStickies</h1>
-
-
-
 <script type="text/javascript">
 
 $(document).ready(function() {
-    <% if @stickies != nil%>
-      setCookie("text",combineCookie("<%=@stickies.join(',')%>"),1);
-    <%end%>
     $(".new-button").click(function() {new_sticky("");});
-    $("body").delegate(".close","click",delete_sticky);
-    var text=getCookie("text").split(',');
-    if(text.length!==1 || text[0]!==""){
-    $.each(text ,function(index,content) {
-      new_sticky(content);   
+    $("body").delegate(".close","click",delete_sticky);//Every sticky created gets a delete-method
+    $("body").delegate(".text","focusout",update_sticky);//Every sticky gets an update-method on unfocus
+    $.each(<%= raw @stickies.to_json %> ,function(id,text) { //Add all stickies on the cookie to the site
+      add_sticky(id,text);
     })
-  }
-   $("#log-out").click(function(){
-     updateCookie();
-     $.ajax({
-        url: '<%=create_stickies_path%>',
-        data: "text="+getCookie("text"),
-        success: logout
-       });
-      });
-   var logout= function(){
-      $.ajax({
-            url: '<%=log_out_path%>',
-            success: function(){clearAll(); location.reload()}
-            });
-        };
-}); 
+});
 
-window.onbeforeunload = function() {
- updateCookie(); 
-};
-
-
-function clearAll(){
-setCookie("text","",1);
-$("#sticky-container").html("");
-
-}
-
-function combineCookie(add){
-var oldCookie=getCookie("text");
-if(oldCookie!==""){
-  return oldCookie+","+add
-}
-else{
- return add
-}
-}
-
-function updateCookie(){
-  var text=Array(); 
-  $( ".sticky .text" ).each(function() {
-    text.push($(this).val())
-  });
-  setCookie("text",text.toString(),1)
-}
-
-
-function setCookie(c_name,value,exdays){
-var exdate=new Date();
-exdate.setDate(exdate.getDate() + exdays);
-var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
-document.cookie=c_name + "=" + c_value;
-}
-
-function getCookie(c_name){
-var i,x,y,ARRcookies=document.cookie.split(";");
-for (i=0;i<ARRcookies.length;i++)
-{
-  x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
-  y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
-  x=x.replace(/^\s+|\s+$/g,"");
-  if (x==c_name)
-    {
-    return unescape(y);
-    }
-  }
-}
-
-
-function new_sticky(text) {
-    var template = $("#sticky-template").html();
-    var sticky= $("<div class='sticky'></div>").html(template);
-    sticky.children(".text").val(text);           
-    sticky.appendTo("#sticky-container");
-}
-
-function delete_sticky() {
-    $(this).parents(".sticky").remove();
-}
 </script>
-
-<div id="messages"></div>
-
 <div id="sticky-template">
   <div class="sticky-head">
     <button type="button" class="close">&times;</button>
   </div>
   <textarea class="text"></textarea>
 </div>
+
 <a class="btn btn-small new-button" href="#"><i class="icon-plus-sign"></i> Create Sticky</a>
 <br>
 <br>
-  <div id="sticky-container"></div>
 
-
-<!--script type="text/javascript">
-$("#createSticky").click(function (event){
-  $.ajax({url: '<%=create_sticky_path%>',
-    error : function(response){
-      alert("doesn't work") 
-   },
-    success : function(response){
-      $("#sticky_create").html(response);
-      alert("works")
-   },
-   type : 'GET'});
-});
-
-
-
-
-</script-->
-
-<!--script type="text/javascript">
-$("#mybutton").click(function (event){
-var exp23 = $("#mybutton").value()
-alert('hello'+exp23.toString())
-$.ajax({ url : '/calculate?'+exp23.toString(),
-         error: function(response){
-          alert("error")
-        }, 
-        beforeComplete: function(response){
-           alert("beforecomplete")
-        },
-         success : function(response) {
-    alert("hello")
-   $("#result").html(response) 
- },
- type : 'GET'});
-
-});
-
-</script>
-
-<input id="mytext" type="text"/>
-<button id="mybutton">Go</button>
-<div id="result"></div>
-
-
-<a href="#register" role="button" class="btn" data-toggle="modal">Register</a>
-<div id="register" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-</div-->
-
-
+<div id="sticky-container"></div>
