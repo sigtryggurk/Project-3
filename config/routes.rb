@@ -1,6 +1,4 @@
 SigtryggProj3::Application.routes.draw do
-  get "errors/bad_route"
-
   resource :stickies
   resource :sessions
   resource :users

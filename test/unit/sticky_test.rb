@@ -1,4 +1,17 @@
 require 'test_helper'
+#
+#Testing Strategy:
+#For merge_temporary_and_stored:
+# 	1. Basic test
+#	2. Temporary stickies empty
+#	3. Stored stickies empty
+#	4. Both empty
+#
+#For update_or_create_stickies:
+#	1.Only updates
+#	2.Only new stickies
+#	3.Basic with both
+#	4.Empty update
 
 class StickyTest < ActiveSupport::TestCase
   test "merge temp and stored" do
@@ -26,7 +39,13 @@ class StickyTest < ActiveSupport::TestCase
     assert_equal expected,got
 
   end
+  test "empty merge" do 
+    temporary=Marshal::dump({})
+    expected={}
+    got=Marshal::load(Sticky.merge_temporary_with_stored(temporary,2))
+    assert_equal expected,got
 
+  end
   test "only updates" do
     sticky1=stickies(:one)
     sticky2=stickies(:two)
@@ -85,4 +104,12 @@ class StickyTest < ActiveSupport::TestCase
     assert_equal expected,got    
 
   end
+  
+  test "empty update and empty create" do
+    stickies={}
+    Sticky.update_or_create_stickies(stickies,2)
+    newstickies=Sticky.find_all_by_user_id(2)
+    assert_equal 0, newstickies.length
+  end
+
 end

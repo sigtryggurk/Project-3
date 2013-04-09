@@ -2251,3 +2251,257 @@ Processing by SessionsController#new as HTML
   Rendered layouts/_messages.html.erb (0.6ms)
 Completed 200 OK in 174ms (Views: 173.2ms | ActiveRecord: 0.0ms)
   [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.7ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "stickies"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "stickies" ("text", "user_id", "created_at", "updated_at", "id") VALUES ('hello', 1, '2013-04-09 07:56:07', '2013-04-09 07:56:07', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "stickies" ("text", "user_id", "created_at", "updated_at", "id") VALUES ('world', 1, '2013-04-09 07:56:07', '2013-04-09 07:56:07', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_hash", "password_salt", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2013-04-09 07:56:08', '2013-04-09 07:56:08', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_hash", "password_salt", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2013-04-09 07:56:08', '2013-04-09 07:56:08', 298486374)[0m
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSticky Load (1.8ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."user_id" = 2
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSticky Load (0.1ms)[0m  [1mSELECT "stickies".* FROM "stickies" WHERE "stickies"."user_id" = 2[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSticky Load (0.2ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36mSticky Load (0.1ms)[0m  [1mSELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = ? LIMIT 1[0m  [["id", 298486374]]
+  [1m[35mSticky Load (0.1ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."user_id" = 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSticky Load (0.1ms)[0m  [1mSELECT "stickies".* FROM "stickies" WHERE "stickies"."user_id" = 2[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSticky Load (0.1ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36mSticky Load (0.0ms)[0m  [1mSELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = ? LIMIT 1[0m  [["id", 298486374]]
+  [1m[35mSticky Load (0.1ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."user_id" = 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (35.0ms)[0m  INSERT INTO "stickies" ("created_at", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Tue, 09 Apr 2013 07:56:08 UTC +00:00], ["text", "ihtfp"], ["updated_at", Tue, 09 Apr 2013 07:56:08 UTC +00:00], ["user_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "stickies" ("created_at", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["created_at", Tue, 09 Apr 2013 07:56:08 UTC +00:00], ["text", "jon"], ["updated_at", Tue, 09 Apr 2013 07:56:08 UTC +00:00], ["user_id", 2]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSticky Load (0.1ms)[0m  [1mSELECT "stickies".* FROM "stickies" WHERE "stickies"."user_id" = 2[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSticky Load (0.1ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36mSticky Load (0.0ms)[0m  [1mSELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = ? LIMIT 1[0m  [["id", 298486374]]
+  [1m[35mSticky Load (0.1ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = 980190962 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  UPDATE "stickies" SET "text" = 'you are the weakest link!', "updated_at" = '2013-04-09 07:56:08.132375' WHERE "stickies"."id" = 980190962
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSticky Load (0.1ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = 298486374 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  UPDATE "stickies" SET "text" = 'goodbye', "updated_at" = '2013-04-09 07:56:08.135006' WHERE "stickies"."id" = 298486374
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSticky Load (0.1ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36mSticky Load (0.0ms)[0m  [1mSELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = ? LIMIT 1[0m  [["id", 298486374]]
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSticky Load (0.1ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36mSticky Load (0.0ms)[0m  [1mSELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = ? LIMIT 1[0m  [["id", 298486374]]
+  [1m[35mSticky Load (0.1ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = 980190962 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  UPDATE "stickies" SET "text" = 'you are the weakest link!', "updated_at" = '2013-04-09 07:56:08.139228' WHERE "stickies"."id" = 980190962
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSticky Load (0.1ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = 298486374 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  UPDATE "stickies" SET "text" = 'goodbye', "updated_at" = '2013-04-09 07:56:08.140588' WHERE "stickies"."id" = 298486374
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "stickies" ("created_at", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["created_at", Tue, 09 Apr 2013 07:56:08 UTC +00:00], ["text", "ihtfp"], ["updated_at", Tue, 09 Apr 2013 07:56:08 UTC +00:00], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "stickies" ("created_at", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Tue, 09 Apr 2013 07:56:08 UTC +00:00], ["text", "jon"], ["updated_at", Tue, 09 Apr 2013 07:56:08 UTC +00:00], ["user_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSticky Load (0.1ms)[0m  SELECT "stickies".* FROM "stickies" 
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.5ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM "stickies"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "stickies" ("text", "user_id", "created_at", "updated_at", "id") VALUES ('hello', 1, '2013-04-09 07:56:10', '2013-04-09 07:56:10', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "stickies" ("text", "user_id", "created_at", "updated_at", "id") VALUES ('world', 1, '2013-04-09 07:56:10', '2013-04-09 07:56:10', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_hash", "password_salt", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2013-04-09 07:56:10', '2013-04-09 07:56:10', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_hash", "password_salt", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2013-04-09 07:56:10', '2013-04-09 07:56:10', 298486374)[0m
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Processing by HomeController#index as HTML
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.5ms)
+Completed 200 OK in 112ms (Views: 111.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/_form.html.erb (48.9ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 124ms (Views: 123.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by StickiesController#create_sticky as HTML
+  Parameters: {"id"=>"new123"}
+Redirected to http://test.host/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Processing by StickiesController#create_sticky as HTML
+  Parameters: {"id"=>"new123"}
+Redirected to http://test.host/
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+Processing by StickiesController#delete_sticky as HTML
+  Parameters: {"id"=>"new123"}
+Redirected to http://test.host/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by StickiesController#create_sticky as HTML
+  Parameters: {"id"=>"new123"}
+Redirected to http://test.host/
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+Processing by StickiesController#update_sticky as HTML
+  Parameters: {"id"=>"new123"}
+Redirected to http://test.host/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (154.4ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 323ms (Views: 291.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.6ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "stickies"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "stickies" ("text", "user_id", "created_at", "updated_at", "id") VALUES ('hello', 1, '2013-04-09 07:56:53', '2013-04-09 07:56:53', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "stickies" ("text", "user_id", "created_at", "updated_at", "id") VALUES ('world', 1, '2013-04-09 07:56:53', '2013-04-09 07:56:53', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_hash", "password_salt", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2013-04-09 07:56:54', '2013-04-09 07:56:54', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_hash", "password_salt", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2013-04-09 07:56:54', '2013-04-09 07:56:54', 298486374)[0m
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSticky Load (17.6ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."user_id" = 2
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSticky Load (0.2ms)[0m  [1mSELECT "stickies".* FROM "stickies" WHERE "stickies"."user_id" = 2[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSticky Load (0.3ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36mSticky Load (0.1ms)[0m  [1mSELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = ? LIMIT 1[0m  [["id", 298486374]]
+  [1m[35mSticky Load (0.1ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSticky Load (0.1ms)[0m  [1mSELECT "stickies".* FROM "stickies" WHERE "stickies"."user_id" = 2[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSticky Load (0.1ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36mSticky Load (0.0ms)[0m  [1mSELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = ? LIMIT 1[0m  [["id", 298486374]]
+  [1m[35mSticky Load (0.1ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."user_id" = 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (16.6ms)[0m  INSERT INTO "stickies" ("created_at", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Tue, 09 Apr 2013 07:56:54 UTC +00:00], ["text", "ihtfp"], ["updated_at", Tue, 09 Apr 2013 07:56:54 UTC +00:00], ["user_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "stickies" ("created_at", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["created_at", Tue, 09 Apr 2013 07:56:54 UTC +00:00], ["text", "jon"], ["updated_at", Tue, 09 Apr 2013 07:56:54 UTC +00:00], ["user_id", 2]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSticky Load (0.1ms)[0m  [1mSELECT "stickies".* FROM "stickies" WHERE "stickies"."user_id" = 2[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSticky Load (0.1ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36mSticky Load (0.0ms)[0m  [1mSELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = ? LIMIT 1[0m  [["id", 298486374]]
+  [1m[35mSticky Load (0.1ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = 980190962 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  UPDATE "stickies" SET "text" = 'you are the weakest link!', "updated_at" = '2013-04-09 07:56:54.237682' WHERE "stickies"."id" = 980190962
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSticky Load (0.1ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = 298486374 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  UPDATE "stickies" SET "text" = 'goodbye', "updated_at" = '2013-04-09 07:56:54.241359' WHERE "stickies"."id" = 298486374
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSticky Load (0.1ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36mSticky Load (0.1ms)[0m  [1mSELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = ? LIMIT 1[0m  [["id", 298486374]]
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSticky Load (0.1ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36mSticky Load (0.0ms)[0m  [1mSELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = ? LIMIT 1[0m  [["id", 298486374]]
+  [1m[35mSticky Load (0.1ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = 980190962 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  UPDATE "stickies" SET "text" = 'you are the weakest link!', "updated_at" = '2013-04-09 07:56:54.247656' WHERE "stickies"."id" = 980190962
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSticky Load (0.1ms)[0m  SELECT "stickies".* FROM "stickies" WHERE "stickies"."id" = 298486374 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  UPDATE "stickies" SET "text" = 'goodbye', "updated_at" = '2013-04-09 07:56:54.249082' WHERE "stickies"."id" = 298486374
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "stickies" ("created_at", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["created_at", Tue, 09 Apr 2013 07:56:54 UTC +00:00], ["text", "ihtfp"], ["updated_at", Tue, 09 Apr 2013 07:56:54 UTC +00:00], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "stickies" ("created_at", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Tue, 09 Apr 2013 07:56:54 UTC +00:00], ["text", "jon"], ["updated_at", Tue, 09 Apr 2013 07:56:54 UTC +00:00], ["user_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSticky Load (0.1ms)[0m  SELECT "stickies".* FROM "stickies" 
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.6ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "stickies"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "stickies" ("text", "user_id", "created_at", "updated_at", "id") VALUES ('hello', 1, '2013-04-09 07:56:56', '2013-04-09 07:56:56', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "stickies" ("text", "user_id", "created_at", "updated_at", "id") VALUES ('world', 1, '2013-04-09 07:56:56', '2013-04-09 07:56:56', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_hash", "password_salt", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2013-04-09 07:56:56', '2013-04-09 07:56:56', 980190962)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_hash", "password_salt", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2013-04-09 07:56:56', '2013-04-09 07:56:56', 298486374)[0m
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by HomeController#index as HTML
+  Rendered layouts/_navigation.html.erb (1.4ms)
+  Rendered layouts/_messages.html.erb (0.8ms)
+Completed 200 OK in 80ms (Views: 79.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/_form.html.erb (2.6ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 42ms (Views: 41.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by StickiesController#create_sticky as HTML
+  Parameters: {"id"=>"new123"}
+Redirected to http://test.host/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Processing by StickiesController#create_sticky as HTML
+  Parameters: {"id"=>"new123"}
+Redirected to http://test.host/
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+Processing by StickiesController#delete_sticky as HTML
+  Parameters: {"id"=>"new123"}
+Redirected to http://test.host/
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by StickiesController#create_sticky as HTML
+  Parameters: {"id"=>"new123"}
+Redirected to http://test.host/
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+Processing by StickiesController#update_sticky as HTML
+  Parameters: {"id"=>"new123"}
+Redirected to http://test.host/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (88.1ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 154ms (Views: 117.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction

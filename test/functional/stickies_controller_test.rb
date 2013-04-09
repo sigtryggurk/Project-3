@@ -1,5 +1,11 @@
 require 'test_helper'
-
+#
+#Testing Strategy:
+#Test every type asynchronous call that the application makes:
+#New-sticky => cookies should contain 'id=>""'
+#Update-sticky => cookies should have 'id=>newText'
+#Delete-sticky => 'id' should be removed from cookies
+#
 class StickiesControllerTest < ActionController::TestCase
 
   test "should add empty to cookies" do
