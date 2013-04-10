@@ -9,7 +9,11 @@ class Sticky < ActiveRecord::Base
   Returns the mergure of the two hashes as a Marshal serialized object
   """
   def self.merge_temporary_with_stored(temporary,user_id)
-    temporary=Marshal::load(temporary)
+    if temporary!=nil
+      temporary=Marshal::load(temporary)
+    else
+      temporary={}
+    end
     stored={}
     Sticky.find_all_by_user_id(user_id).map{|sticky| stored[sticky.id.to_s]=sticky.text}
     temporary=temporary.merge(stored)
