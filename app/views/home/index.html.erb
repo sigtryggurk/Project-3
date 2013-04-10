@@ -1,0 +1,25 @@
+<h1>SiggiStickies</h1>
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $(".new-button").click(function() {new_sticky("");});
+    $("body").delegate(".close","click",delete_sticky);//Every sticky created gets a delete-method
+    $("body").delegate(".text","focusout",update_sticky);//Every sticky gets an update-method on unfocus
+    $.each(<%= raw @stickies.to_json %> ,function(id,text) { //Add all stickies on the cookie to the site
+      add_sticky(id,text);
+    })
+});
+
+</script>
+<div id="sticky-template">
+  <div class="sticky-head">
+    <button type="button" class="close">&times;</button>
+  </div>
+  <textarea class="text"></textarea>
+</div>
+
+<a class="btn btn-small new-button" href="#"><i class="icon-plus-sign"></i> Create Sticky</a>
+<br>
+<br>
+
+<div id="sticky-container"></div>
