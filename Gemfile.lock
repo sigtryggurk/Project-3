@@ -112,6 +112,7 @@ DEPENDENCIES
   bootstrap-sass
   coffee-rails (~> 3.2.1)
   jquery-rails
+  json
   pg
   rails (= 3.2.11)
   sass-rails (~> 3.2.3)

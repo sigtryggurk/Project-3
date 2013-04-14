@@ -1,12 +1,11 @@
-<h1>SiggiStickies</h1>
 <script type="text/javascript">
 
 $(document).ready(function() {
     $(".new-button").click(function() {new_sticky("");});
     $("body").delegate(".close","click",delete_sticky);//Every sticky created gets a delete-method
-    $("body").delegate(".text","focusout",update_sticky);//Every sticky gets an update-method on unfocus
-    $.each(<%= raw @stickies.to_json %> ,function(id,text) { //Add all stickies on the cookie to the site
-      add_sticky(id,text);
+    $("body").delegate(".sticky","focusout mouseout",update_sticky);//sticky gets an update on unfocus/mouseout
+    $.each(<%= raw @stickies.to_json %> ,function(id,attr) { //Add all stickies on the cookie to the site
+      add_sticky(id,attr);
     })
 });
 
@@ -17,9 +16,5 @@ $(document).ready(function() {
   </div>
   <textarea class="text"></textarea>
 </div>
-
-<a class="btn btn-small new-button" href="#"><i class="icon-plus-sign"></i> Create Sticky</a>
-<br>
-<br>
 
 <div id="sticky-container"></div>
