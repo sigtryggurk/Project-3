@@ -1,5 +1,5 @@
 class Sticky < ActiveRecord::Base
-  attr_accessible :text, :user_id,:position
+  attr_accessible :text, :user_id,:position,:textProperties
   
   """
   Class method that takes in a hash (id=>text)  and merges it with a hash of all stickies belonging
@@ -15,7 +15,7 @@ class Sticky < ActiveRecord::Base
       temporary={}
     end
     stored={}
-    Sticky.find_all_by_user_id(user_id).map{|sticky| stored[sticky.id.to_s]={:text=>sticky.text,:position=>YAML::load(sticky.position)}.to_json.to_s}
+    Sticky.find_all_by_user_id(user_id).map{|sticky| stored[sticky.id.to_s]={:text=>sticky.text,:position=>YAML::load(sticky.position), :textProperties=>YAML::load(sticky.textProperties)}.to_json.to_s}
     temporary=temporary.merge(stored)
     return Marshal::dump(temporary)
   end
@@ -32,12 +32,14 @@ class Sticky < ActiveRecord::Base
       attr=JSON::parse(attr)
       text=attr["text"]
       position=YAML::dump(attr["position"])
+      textProperties=YAML::dump(attr["textProperties"])
       if id.start_with?("new")
-        Sticky.create(:user_id=>user_id,:text=>text,:position=>position)
+        Sticky.create(:user_id=>user_id,:text=>text,:position=>position,:textProperties=>textProperties)
       else
         sticky=Sticky.find_or_create_by_id(:id=>id)
         sticky.text=text
         sticky.position=position
+        sticky.textProperties=textProperties
         sticky.save
       end
 

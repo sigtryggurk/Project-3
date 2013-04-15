@@ -8,19 +8,18 @@
 }
 
 .sticky {
+    position:absolute;
     background-color: #FEF4AC;
-    float:left;
     margin: 20px;
-    min-width: 200px;
-    min-height: 200px;
+    width: 230px;
+    height: 240px;
     -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);  
     -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);  
     box-shadow: 5px 5px 7px rgba(33,33,33,.7);  
 }
 .text{
     font-family: Gill Sans, Verdana;
-    font-size:16px;
-    font-weight: bold;
+    font-size:18px;
 
 }
 .sticky:hover, .sticky:focus{  
@@ -59,12 +58,33 @@
     background-color: transparent;
     border: none;
     font-size: 14px;
-    height: 180px;
+    height: 160px;
     margin: 10px;
-    min-width: 200px;
-    min-height: 180px;
+    width: 200px;
     padding-top: 10px;
     width: 200px;
+    resize: none;
+}
+.sticky .properties{
+margin:5px;
+}
+
+.sticky button{
+  background-color: #FEF4CF;
+  width:25px;
+  height:25px;
+}
+
+.sticky .bold{
+ font-weight:700;
+}
+
+.sticky .italic{
+  font-style:italic;
+}
+
+.sticky .underline{
+  text-decoration:underline;
 }
 
 

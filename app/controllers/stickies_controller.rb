@@ -8,7 +8,7 @@ class StickiesController < ApplicationController
     else
       stickies={}
     end
-    stickies[params[:id]]="{}"
+    stickies[params[:id]]=params[:attr]
     cookies[:stickies]=Marshal::dump(stickies)
     redirect_to root_url
   end
