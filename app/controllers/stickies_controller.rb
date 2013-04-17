@@ -8,7 +8,7 @@ class StickiesController < ApplicationController
     else
       stickies={}
     end
-    stickies[params[:id]]=params[:attr]
+    stickies[params[:id]]=params[:attr] #attr contains text ,position and textProperties
     cookies[:stickies]=Marshal::dump(stickies)
     redirect_to root_url
   end
@@ -18,7 +18,7 @@ class StickiesController < ApplicationController
   """
   def update_sticky
     stickies=Marshal::load(cookies[:stickies])
-    stickies[params[:id]]=params[:attr]
+    stickies[params[:id]]=params[:attr] #attr contains text ,position and textProperties
     cookies[:stickies]=Marshal::dump(stickies)
     redirect_to root_url
   end
@@ -30,9 +30,9 @@ class StickiesController < ApplicationController
     stickies=Marshal::load(cookies[:stickies])
     stickies.delete(params[:id])
     cookies[:stickies]=Marshal::dump(stickies)
-    if !params[:id].start_with?("new") and current_user
+    if !params[:id].start_with?("new") and current_user #delete from server if logged in
       sticky=Sticky.find(params[:id])
-      if sticky!=nil and sticky.user_id==current_user.id
+      if sticky!=nil and sticky.user_id==current_user.id #make sure you are allowed to delete the sticky
         Sticky.destroy(params[:id])
       end
     end
