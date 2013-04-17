@@ -8,14 +8,15 @@ require 'test_helper'
 #
 class StickiesControllerTest < ActionController::TestCase
   new='{text:"",position:{top:200,left:50},textProperties:{"font-weight":400,"font-style":"normal","text-decoration":"none"}'
-
+  #checks if create new action adds a new sticky to cookies
   test "should add empty to cookies" do
     id="new123"
     post :create_sticky,{:id=>id,:attr=>new}
     stickies=Marshal::load(cookies[:stickies])
     assert_equal new,stickies[id]
   end
-
+  
+  #checks to see if text is updated in cookie
   test "should update text in cookie" do
     id="new123"
     post :create_sticky,{:id=>id,:attr=>new}
@@ -26,6 +27,7 @@ ration":"none"}'
     assert_equal update,stickies[id]
   end
 
+  #checks to see if position is updated in cookie
   test "should update position in cookie" do
     id="new123"
     post :create_sticky,{:id=>id,:attr=>new}
@@ -36,6 +38,7 @@ ration":"none"}'
     assert_equal update,stickies[id]
   end
 
+  #checks to see if textProperties are updated in cookie
   test "should update textProperties in cookie" do
     id="new123"
     post :create_sticky,{:id=>id,:attr=>new}    
@@ -45,6 +48,7 @@ ration":"none"}'
     assert_equal update,stickies[id]
   end
 
+  #checks to see if remove action removes the correct sticky from cookies
   test "should remove sticky from cookies" do
     id="new123"
     post :create_sticky,{:id=>id}

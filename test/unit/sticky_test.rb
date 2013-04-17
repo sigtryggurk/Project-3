@@ -14,12 +14,13 @@ require 'test_helper'
 #	4.Empty update
 
 class StickyTest < ActiveSupport::TestCase
+    #helper method that takes a sticky and returns a JSON string represenatation of its attributes
     def repr(sticky)
       dict={:text=>sticky.text,:position=>YAML::load(sticky.position),:textProperties=>YAML::load(sticky.textProperties)}
     return dict.to_json.to_s
   end
 
-
+  #have both stickies on the server and temporary stickies on cookies - checks to see if merge correctly
   test "merge temp and stored" do
     sticky1=stickies(:one)
     sticky2=stickies(:two)
@@ -29,6 +30,8 @@ class StickyTest < ActiveSupport::TestCase
     got=Marshal::load(Sticky.merge_temporary_with_stored(temporary,1))
     assert_equal expected,got
   end 
+
+  #have only stickies on the server and none on the cookies - expect only the ones from the server
   test "merge empty temp and stored" do
     sticky1=stickies(:one)
     sticky2=stickies(:two)
@@ -37,6 +40,8 @@ class StickyTest < ActiveSupport::TestCase
     got=Marshal::load(Sticky.merge_temporary_with_stored(temporary,1))
     assert_equal expected,got
   end 
+
+  #have only stickies in cookies and none on the server - expect only the ones from cookies
   test "merge temp and empty stored" do
     sticky1={:text=>"ihtfp",:position=>{:top=>0,:left=>0},:textProperties=>{:'font-weight'=>"bold",:'font-style'=>"italic",:'text-decoration'=>"underline"}}.to_json.to_s
     expected={"new1"=>sticky1}
@@ -44,13 +49,16 @@ class StickyTest < ActiveSupport::TestCase
     got=Marshal::load(Sticky.merge_temporary_with_stored(temporary,2))
     assert_equal expected,got
   end
+  
+  #have no stickies on server and no in cookies - expect empty
   test "empty merge" do 
     temporary=Marshal::dump({})
     expected={}
     got=Marshal::load(Sticky.merge_temporary_with_stored(temporary,2))
     assert_equal expected,got
-
   end
+  
+  #only stickies on cookies  come from existing stickies (on the server) expect them to updated correctly
   test "only updates" do
     sticky1=stickies(:one)
     text="hello"
@@ -73,6 +81,8 @@ class StickyTest < ActiveSupport::TestCase
     assert_equal position1,YAML::load(sticky1.position)
     assert_equal textProperties1,YAML::load(sticky1.textProperties)
   end
+
+  #only new stickies on cookies - expect them to be created
   test "only create" do
     sticky1={:text=>"ihtfp",:position=>{:top=>0,:left=>0},:textProperties=>{:'font-weight'=>"bold",:'font-style'=>"italic",:'text-decoration'=>"underline"}}.to_json.to_s
     stickies={"new1"=>sticky1}
@@ -82,6 +92,8 @@ class StickyTest < ActiveSupport::TestCase
     assert newsticky.text=="ihtfp"
      
   end
+
+  #stickies on server and new stickies, expect all to be correct
   test "update and create" do
     sticky1=stickies(:one)
     sticky2=stickies(:two)
@@ -103,6 +115,8 @@ class StickyTest < ActiveSupport::TestCase
     
 
   end
+
+  #no sticky updates/creations - expect to find no stickies
   test "empty update and empty create" do
     stickies={}
     Sticky.update_or_create_stickies(stickies,2)
