@@ -1,0 +1,15 @@
+<%= link_to "SiggiStickies", root_path, :class => 'brand' %>
+<ul class="nav">
+  <li> <a class="new-button" href="#"><i class="icon-plus-sign"></i> Create Sticky</a></li>
+  <% if current_user %>
+    <p style="float:right;">Logged in as <b><%= current_user.name %></b> (<%= current_user.email%>) <%= link_to "Log out", log_out_path %></p>
+  <% else %>
+    <li>
+    <%= link_to "Sign in", new_sessions_path %>
+    </li>
+    <li>
+    <%= link_to "Register", new_users_path %>
+    </li>
+  <%end%>
+</ul>
+

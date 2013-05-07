@@ -1,0 +1,28 @@
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $(".new-button").click(function() {new_sticky("");});
+    $("body").delegate(".close","click",delete_sticky);//Every sticky created gets a delete-method
+    $("body").delegate(".sticky","focusout mouseout",update_sticky);//sticky gets an update on unfocus/mouseout
+    $("body").delegate(".bold","click",generate_toggle("font-weight",700,400));
+    $("body").delegate(".italic","click",generate_toggle("font-style","italic","normal"));
+    $("body").delegate(".underline","click",generate_toggle("text-decoration","underline","none"));
+    $.each(<%= raw @stickies.to_json %> ,function(id,attr) { //Add all stickies on the cookie to the site
+      add_sticky(id,attr);
+    })
+});
+
+</script>
+<div id="sticky-container"></div>
+<div id="sticky-template">
+  <div class="sticky-head">
+    <div class="btn-group properties">
+    <button type="button" class="bold">B</button>
+    <button type="button" class="italic">I</button>
+    <button type="button" class="underline">U</button>
+    </div>
+    <button type="button" class="close">&times;</button>
+  </div>
+  <textarea class="text"></textarea>
+</div>
+
